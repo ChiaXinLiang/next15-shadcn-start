@@ -41,7 +41,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Ensure you have the following installed on your machine:
 
-- Node.js (version 14.x or later)
+- Node.js (version 15.x or later)
 - npm, yarn, pnpm, or bun (depending on your preference)
 
 ### Installation
