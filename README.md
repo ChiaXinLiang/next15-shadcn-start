@@ -1,84 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 15 and React 19 Project
 
-## Getting Started
+This project is a modern web application built using Next.js 15 and React 19. It follows a set of conventions and best practices to ensure maintainability, scalability, and performance.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Framework Versions](#framework-versions)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Scripts](#scripts)
+- [Configuration](#configuration)
+- [Development Guidelines](#development-guidelines)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Framework Versions
+
+- **Next.js**: 15.x
+- **React**: 19.x (Release Candidate)
+
+## Project Structure
+
+The project is organized into several key directories:
+
+- `src/app`: Contains the main application logic, including pages and components.
+- `src/components`: Houses reusable UI components, organized by common, UI, and feature-specific directories.
+- `src/lib`: Includes utility functions, hooks, and other shared logic.
+- `src/prisma`: Manages database schema and migrations using Prisma.
+- `rules`: Contains YAML files defining project conventions and best practices.
+
+## Installation
+
+To get started with the project, clone the repository and install the dependencies:
+
+```
+bash
+git clone <repository-url>
+cd <project-directory>
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The following scripts are available in the project:
 
-## Learn More
+- `npm run dev`: Start the development server.
+- `npm run build`: Build the application for production.
+- `npm run start`: Start the production server.
+- `npm run lint`: Run ESLint to check for code quality issues.
+- `npm run format`: Format the code using Prettier.
+- `npm run clean`: Remove build artifacts and node modules.
+- `npm run db:generate`: Generate Prisma client.
+- `npm run db:migrate`: Run database migrations.
+- `npm run db:deploy`: Deploy database migrations.
+- `npm run db:push`: Push the Prisma schema to the database.
+- `npm run db:status`: Check the status of database migrations.
+- `npm run db:studio`: Open Prisma Studio for database management.
 
-To learn more about Next.js, take a look at the following resources:
+## Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project uses several configuration files:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `.env.local`: Store environment variables locally. Do not commit this file to version control.
+- `next.config.ts`: Next.js configuration file.
+- `tailwind.config.ts`: Tailwind CSS configuration file.
+- `.eslintrc.json`: ESLint configuration file.
+- `.prettierrc.json`: Prettier configuration file.
 
-## Deploy on Vercel
+## Development Guidelines
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project follows a set of guidelines to ensure code quality and consistency:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Environment Configuration**: Use Zod for environment variable validation. Store sensitive data in `.env.local`.
+- **Component Organization**: Use PascalCase for component names. Each component should be in its own file.
+- **Styling**: Use Tailwind CSS for styling. Follow shadcn's styling variables.
+- **API Routes**: Use HTTP method exports and Zod for request validation.
+- **State Management**: Use React Context and Zustand for state management.
 
-## How to Use This Project
+For detailed guidelines, refer to the YAML files in the `rules` directory.
 
-### Prerequisites
+## Contributing
 
-Ensure you have the following installed on your machine:
+Contributions are welcome! Please follow the project's coding standards and guidelines. Before submitting a pull request, ensure that your code passes all tests and adheres to the project's conventions.
 
-- Node.js (version 15.x or later)
-- npm, yarn, pnpm, or bun (depending on your preference)
+## License
 
-### Installation
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-1. Clone the repository:
-
-   ```bash
-   git clone <repository-url>
-   cd next15-shadcn-start
-   ```
-
-2. Install the dependencies:
-
-   Using npm:
-
-   ```bash
-   npm install
-   ```
-
-   Using yarn:
-
-   ```bash
-   yarn install
-   ```
-
-   Using pnpm:
-
-   ```bash
-   pnpm install
-   ```
-
-   Using bun:
-
-   ```bash
-   bun install
-   ```
-
-### Running the Development Server
-
-To start the development server, run:
