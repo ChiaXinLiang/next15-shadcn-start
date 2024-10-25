@@ -12,14 +12,17 @@ implementation:
     import { PrismaAdapter } from '@auth/prisma-adapter'
     import { prisma } from '@/lib/db/client'
 
-    export const {
-      handlers: { GET, POST },
-      auth,
-      signIn,
-      signOut,
-    } = NextAuth({
+    export const { auth, signIn, signOut } = NextAuth({
       adapter: PrismaAdapter(prisma),
       session: { strategy: 'jwt' },
+      pages: {
+        signIn: '/auth/login',
+      },
+      callbacks: {
+        authorized({ auth, request: { nextUrl } }) {
+          return !!auth?.user
+        }
+      }
       // Additional configuration
     })
 security:

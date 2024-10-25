@@ -24,7 +24,10 @@ implementation:
           dashboard/
             Overview.tsx
 best_practices:
-  - Avoid using `ssr: false` with `next/dynamic` in Server Components
-  - Support for ESLint 9
-  - Implement Core Web Vitals optimizations
-  - Support for both Client and Server Components rendering
+  - Use React.cache() for memoizing server-side data fetching
+  - Leverage use server and use client directives appropriately
+  - Implement proper Suspense boundaries for streaming
+  - Support for document hooks in Client Components
+  - Utilize React 19's improved error boundary handling
+  - Support for automatic batching in Server Components
+  - Implement proper asset loading strategies

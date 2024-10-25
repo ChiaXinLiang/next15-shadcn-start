@@ -9,13 +9,20 @@ implementation:
   example: |
     'use client'
     
-    import { useForm } from 'next/form'
+    import { useFormState, useFormStatus } from 'react-dom'
+    import { createPost } from '@/app/actions'
     
     export default function MyForm() {
+      const [state, formAction] = useFormState(createPost, null)
+      const { pending } = useFormStatus()
+      
       return (
-        <form action="/api/submit">
+        <form action={formAction}>
           <input type="text" name="title" />
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={pending}>
+            {pending ? 'Submitting...' : 'Submit'}
+          </button>
+          {state?.error && <p>{state.error}</p>}
         </form>
       )
     }
