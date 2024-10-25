@@ -1,55 +1,101 @@
+# Rules Reference
+This file serves as the main configuration file for Next.js 15 and React 19 projects. It references and implements the detailed rules located in the `rules/` directory. Each section corresponds to specific rule files in the rules folder that provide comprehensive implementation details.
 
-    You are an expert full-stack developer proficient in TypeScript, React, Next.js, and modern UI/UX frameworks (e.g., Tailwind CSS, Shadcn UI, Radix UI). Your task is to produce the most optimized and maintainable Next.js code, following best practices and adhering to the principles of clean code and robust architecture.
+# Framework Versions
+- Next.js: 15.x
+- React: 19.x (Release Candidate)
 
-    ### Objective
-    - Create a Next.js solution that is not only functional but also adheres to the best practices in performance, security, and maintainability.
+Provide guidance and best practices for a software development project according to specified rules and conventions for environment configuration, app router structure, component organization, API routes, styling, and other critical aspects. Ensure that all aspects of the project conform to the described standards and conventions.
 
-    ### Code Style and Structure
-    - Write concise, technical TypeScript code with accurate examples.
-    - Use functional and declarative programming patterns; avoid classes.
-    - Favor iteration and modularization over code duplication.
-    - Use descriptive variable names with auxiliary verbs (e.g., `isLoading`, `hasError`).
-    - Structure files with exported components, subcomponents, helpers, static content, and types.
-    - Use lowercase with dashes for directory names (e.g., `components/auth-wizard`).
+# Steps
+# Each step references corresponding YAML files in the rules/ directory and follows Next.js 15 conventions
 
-    ### Optimization and Best Practices
-    - Minimize the use of `'use client'`, `useEffect`, and `setState`; favor React Server Components (RSC) and Next.js SSR features.
-    - Implement dynamic imports for code splitting and optimization.
-    - Use responsive design with a mobile-first approach.
-    - Optimize images: use WebP format, include size data, implement lazy loading.
+1. **Environment Configuration** (rules/environment.yaml)
+   - Validate environment variables using Zod for type safety.
+   - Store sensitive data in `.env.local` and never commit `.env` files to version control.
+   - Provide documentation for environment variables in `.env.example`.
 
-    ### Error Handling and Validation
-    - Prioritize error handling and edge cases:
-      - Use early returns for error conditions.
-      - Implement guard clauses to handle preconditions and invalid states early.
-      - Use custom error types for consistent error handling.
+2. **App Router Structure** (rules/app-router.yaml)
+   - Use default exports for page components and React Server Components as default practices.
+   - Implement the 'use client' directive as necessary.
+   - Use standardized file naming conventions such as `page.tsx` and `layout.tsx`.
 
-    ### UI and Styling
-    - Use modern UI frameworks (e.g., Tailwind CSS, Shadcn UI, Radix UI) for styling.
-    - Implement consistent design and responsive patterns across platforms.
+3. **Component Organization** (rules/components.yaml)
+   - Categorize components into directories: `components/common/`, `components/ui/`, and `components/[feature]/`.
+   - Use PascalCase for component names and limit files to one component each.
+   - Define TypeScript interfaces for props to enforce type safety.
 
-    ### State Management and Data Fetching
-    - Use modern state management solutions (e.g., Zustand, TanStack React Query) to handle global state and data fetching.
-    - Implement validation using Zod for schema validation.
+4. **Shadcn Components** (rules/components.yaml)
+   - Utilize destructured imports to maintain readability and include accessibility features.
+   - Use the `cn()` utility for merging `className` attributes.
+   - Adhere to default styling patterns provided by the framework.
 
-    ### Security and Performance
-    - Implement proper error handling, user input validation, and secure coding practices.
-    - Follow performance optimization techniques, such as reducing load times and improving rendering efficiency.
+5. **API Routes** (rules/api.yaml)
+   - Export HTTP method handlers, validate requests using Zod, and ensure comprehensive error handling.
+   - Utilize 'force-static' caching when applicable to optimize performance.
 
-    ### Testing and Documentation
-    - Write unit tests for components using Jest and React Testing Library.
-    - Provide clear and concise comments for complex logic.
-    - Use JSDoc comments for functions and components to improve IDE intellisense.
+6. **Styling** (rules/styling.yaml)
+   - Apply Tailwind CSS for styling and adhere to shadcn's styling variables.
+   - Restrict styles to the specific file of the component to maintain separation.
 
-    ### Methodology
-    1. **System 2 Thinking**: Approach the problem with analytical rigor. Break down the requirements into smaller, manageable parts and thoroughly consider each step before implementation.
-    2. **Tree of Thoughts**: Evaluate multiple possible solutions and their consequences. Use a structured approach to explore different paths and select the optimal one.
-    3. **Iterative Refinement**: Before finalizing the code, consider improvements, edge cases, and optimizations. Iterate through potential enhancements to ensure the final solution is robust.
+7. **TypeScript Types** (rules/types.yaml)
+   - Centralize shared types and export through an `index.ts`.
+   - Provide descriptive names and JSDoc comments for all types for clarity.
 
-    **Process**:
-    1. **Deep Dive Analysis**: Begin by conducting a thorough analysis of the task at hand, considering the technical requirements and constraints.
-    2. **Planning**: Develop a clear plan that outlines the architectural structure and flow of the solution, using <PLANNING> tags if necessary.
-    3. **Implementation**: Implement the solution step-by-step, ensuring that each part adheres to the specified best practices.
-    4. **Review and Optimize**: Perform a review of the code, looking for areas of potential optimization and improvement.
-    5. **Finalization**: Finalize the code by ensuring it meets all requirements, is secure, and is performant.
-    
+8. **State Management** (rules/state.yaml)
+   - Leverage React Context for global state and zustand for complex state management solutions.
+   - Follow immutability best practices to maintain state integrity.
+
+9. **Utilities** (rules/utils.yaml)
+   - Write utilities as pure functions and ensure testability.
+   - Document utilities using TypeScript annotations.
+
+10. **Server Actions** (rules/server-actions.yaml)
+    - Use the 'use server' directive and validate data with Zod.
+    - Implement CSRF protection and comprehensive error handling strategies.
+
+11. **Database Management** (rules/database.yaml)
+    - Employ Prisma for database interactions, ensuring effective schema management and migrations.
+    - Follow proper normalization practices and use transactions for integrity.
+    - Implement appropriate caching strategies.
+
+12. **Authentication** (rules/auth.yaml)
+    - Implement authentication using NextAuth.js, securing APIs effectively.
+    - Manage sessions securely to prevent unauthorized access.
+
+13. **Middleware and Caching** (rules/middleware.yaml, rules/caching.yaml)
+    - Follow edge runtime constraints for middleware development.
+    - Control caching explicitly using `fetchCache` and `Cache-Control` headers.
+
+14. **Forms** (rules/forms.yaml)
+    - Utilize next/form for form navigation and implement prefetching capabilities to enhance user experience.
+
+# Framework-Specific Features
+## Next.js 15
+- Enhanced App Router with improved caching strategies
+- Static and Dynamic Route Handlers
+- Support for next.config.ts TypeScript configuration
+- Enhanced Forms with next/form for client-side navigation
+- Improved metadata API
+- Static Route Indicator in development
+
+## React 19
+- Use React 19 Server Components by default
+- Improved Suspense integration
+- Enhanced streaming capabilities
+- Support for use client/server directives
+- Improved asset loading strategies
+- Enhanced error boundary handling
+
+# Output Format
+
+Provide the final documentation or code files based on the specified sections. Ensure responses are structured as detailed instructions or formatted templates for each section, maintaining clarity and adherence to the established rules and naming conventions.
+
+# Notes
+- Pay careful attention to naming conventions and export practices.
+- Ensure validation, error handling, and accessibility features are included as specified.
+- Optimize implementations for security and performance.
+- Refer to individual rule files in the rules/ directory for detailed implementation guidelines.
+
+# Rule Files Reference
+All implementation details, conventions, and best practices are defined in YAML files within the rules/ directory. See rules/main.yaml for the complete rule set organization.
